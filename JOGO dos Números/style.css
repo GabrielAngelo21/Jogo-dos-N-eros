@@ -1,0 +1,99 @@
+body {
+    background-color: #1c1c1c; /* Fundo preto */
+    font-family: 'Arial', sans-serif;
+    color: #e0e0e0; /* Texto cinza claro */
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#jogo, #tela-inicial {
+    padding: 20px;
+    margin: 50px auto;
+    background-color: #2c2c2c; /* Fundo cinza escuro */
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    width: 80%;
+}
+
+h1, h2 {
+    color: #ffffff; /* Títulos brancos */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.container img {
+    cursor: pointer;
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin: 10px; /* Margem entre as imagens */
+}
+
+.container img:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 12px rgba(255, 255, 255, 0.3);
+}
+
+input[type="button"], input[type="reset"] {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #444444; /* Botão cinza escuro */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.2s;
+}
+
+input[type="button"]:hover, input[type="reset"]:hover {
+    background-color: #555555; /* Botão cinza claro ao passar o mouse */
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.5);
+}
+
+#resultado {
+    display: none;
+    padding: 20px;
+    background-color: #333333; /* Fundo do resultado */
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+}
+
+#tela-inicial {
+    display: block;
+    text-align: center;
+}
+
+#tela-inicial h2 {
+    font-size: 24px;
+}
+
+#tela-inicial p {
+    font-size: 18px;
+}
+
+#tela-inicial button {
+    padding: 15px 30px;
+    background-color: #444444; /* Botão cinza escuro */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#tela-inicial button:hover {
+    background-color: #555555; /* Botão cinza claro ao passar o mouse */
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Números</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css"> <!-- Vinculando o CSS externo -->
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">PW2</a>
+            <button class="navbar-toggler" type="button"
+                data-toggle="collapse" data-target="#navbarID"
+                aria-controls="navbarID" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarID">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="#">Jogo Imagens</a>
+                    <a class="nav-link" href="#">Jogo Números</a>
+                    <a class="nav-link" href="#">Jogo Quizz</a>
+                    <a class="nav-link" href="#">Devs</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="tela-inicial">
+        <h1>Jogo da Adivinhação</h1>
+        <h2>Pense em um número de 1 a 31 e eu vou adivinhar!</h2>
+        <p>As regras são simples:</p>
+        <p>Eu vou te mostrar algumas cartas com números. Você deve selecionar todas as cartas que o seu número aparece. clique em "Ver o Resultado" para ver se eu acertei o número.</p>
+        <button onclick="iniciarJogo()">Iniciar Jogo</button>
+    </div>
+
+    <div id="jogo" style="display: none;">
+        <h1>Escolha um número de 1 até 31</h1>
+        <form name="formAdivinha" method="get">
+            <marquee behavior="alternate"><h2>Escolha abaixo as cartas em que seu número aparece.</h2></marquee>
+
+            <div class="container">
+                <img src="carta1.png" onclick="selecionarCarta(1)" />
+                <img src="carta2.png" onclick="selecionarCarta(2)" />
+            </div>
+
+            <div class="container">
+                <img src="carta3.png" onclick="selecionarCarta(3)" />
+                <img src="carta4.png" onclick="selecionarCarta(4)" />
+            </div>
+
+            <div class="container">
+                <img src="carta5.png" onclick="selecionarCarta(5)" />
+            </div>
+
+            <input type="button" name="verifica" value="Ver o Resultado" onclick="mostrarResultado()">
+            <input type="reset" name="limpar" value="Limpar Respostas" onclick="limparRespostas()">
+        </form>
+    </div>
+
+    <div id="resultado"></div>
+
+    <script>
+        var respostas = [0, 0, 0, 0, 0];
+
+        function iniciarJogo() {
+            document.getElementById('tela-inicial').style.display = 'none';
+            document.getElementById('jogo').style.display = 'block';
+            limparRespostas(); // Limpa respostas quando o jogo inicia
+        }
+
+        function selecionarCarta(carta) {
+            respostas[carta - 1] = respostas[carta - 1] == 0 ? 1 : 0;
+        }
+
+        function mostrarResultado() {
+            var acertos = 0;
+
+            if (respostas[0] == 1) acertos += 1;
+            if (respostas[1] == 1) acertos += 2;
+            if (respostas[2] == 1) acertos += 4;
+            if (respostas[3] == 1) acertos += 8;
+            if (respostas[4] == 1) acertos += 16;
+
+            var resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = "";
+
+            if (acertos > 0) {
+                document.getElementById('jogo').style.display = 'none';
+                resultadoDiv.style.display = 'block';
+                resultadoDiv.innerHTML = '<h2>Esse é o seu número: ' + acertos + '</h2><br />' +
+                    '<img src="adivinhador.jpg" width="300" height="300" />' +
+                    '<br /><br /><a href="#" onclick="resetarJogo()">Tentar Novamente!!!</a>';
+            } else {
+                alert('Você não escolheu nenhuma carta');
+            }
+        }
+
+        function limparRespostas() {
+            respostas = [0, 0, 0, 0, 0];
+            document.getElementById('resultado').innerHTML = "";
+        }
+
+        function resetarJogo() {
+            limparRespostas();
+            document.getElementById('jogo').style.display = 'block';
+            document.getElementById('resultado').style.display = 'none';
+            document.getElementById('tela-inicial').style.display = 'block'; 
+        }
+    </script>
+</body>
+</html>
